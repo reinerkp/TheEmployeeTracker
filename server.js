@@ -1,6 +1,7 @@
 const express = require("express");
-// Import and require mysql2
 const mysql = require("mysql2");
+const inquire = require("inquire");
+const consoleTable = require("console.table");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -9,6 +10,36 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+
+inquirer
+  .prompt([
+    {
+      type: 'input',
+      name: 'name',
+      message: 'What is your name?',
+    },
+    {
+      type: 'checkbox',
+      message: 'What languages do you know?',
+      name: 'stack',
+      choices: ['HTML', 'CSS', 'JavaScript', 'MySQL'],
+    },
+    {
+      type: 'list',
+      message: 'What would you like todo?',
+      name: 'contact',
+      choices: ['View all employees', 'phone', 'telekinesis'],
+    },
+  ])
+  .then((data) => {
+    const filename = `${data.name.toLowerCase().split(' ').join('')}.json`;
+
+    fs.writeFile(filename, JSON.stringify(data, null, '\t'), (err) =>
+      err ? console.log(err) : console.log('Success!')
+    );
+  });
+
+
 // Connect to database
 const db = mysql.createConnection(
   {
@@ -16,7 +47,7 @@ const db = mysql.createConnection(
     // MySQL username,
     user: "root",
     // TODO: Add MySQL password here
-    password: "MyP@$$W0rd!",
+    password: "Dcsd243712",
     database: "company_db",
   },
   console.log(`Connected to the company_db database.`)
