@@ -8,10 +8,17 @@ Use this employee tracker to view current employees, departments, and roles; as 
 
 
 ## Visuals
-Picture
+This picture shows the server! 
+
+
+![An image of the server on a computer displaying a list](./Assets/adding%20role.png)
+
+
+
+![An image of the server on a computer displaying a list](./Assets/Employees.png)
 
 ## Contributing
-collaborated with Johnny McGrown
+Collaborated with Johnny McGrown
 
 
 ## Languages Used
